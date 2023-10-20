@@ -95,8 +95,11 @@ abstract class Provider
      *
      * @return string
      */
-    public function getSecret()
+    public function getSecret($a = 1)
     {
+        if($a){
+            return config()->get('jwt.old_secret');
+        }
         return $this->secret;
     }
 
@@ -173,9 +176,9 @@ abstract class Provider
      *
      * @return resource|string
      */
-    protected function getVerificationKey()
+    protected function getVerificationKey($a = 1)
     {
-        return $this->isAsymmetric() ? $this->getPublicKey() : $this->getSecret();
+        return $this->isAsymmetric() ? $this->getPublicKey() : $this->getSecret(1);
     }
 
     /**
