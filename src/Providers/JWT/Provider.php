@@ -178,7 +178,7 @@ abstract class Provider
      */
     protected function getVerificationKey($a = 0)
     {
-        return $this->isAsymmetric() ? $this->getPublicKey() : $this->getSecret(1);
+        return $this->isAsymmetric() ? $this->getPublicKey() : $this->getSecret($a);
     }
 
     /**
