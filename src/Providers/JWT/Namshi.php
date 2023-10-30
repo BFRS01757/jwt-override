@@ -85,10 +85,8 @@ class Namshi extends Provider implements JWT
             throw new TokenInvalidException('Could not decode token: '.$e->getMessage(), $e->getCode(), $e);
         }
 
-        if (! $jws->verify($this->getVerificationKey(), $this->getAlgo())) {
-            if (! $jws->verify($this->getVerificationKey(1), $this->getAlgo())) {
-                throw new TokenInvalidException('Token Signature could not be verified.');
-            }else{
+        if (!$jws->verify($this->getVerificationKey(), $this->getAlgo())) {
+            if (!$jws->verify($this->getVerificationKey(1), $this->getAlgo())) {
                 throw new TokenInvalidException('Token Signature could not be verified.');
             }
         }
